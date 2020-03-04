@@ -1,0 +1,15 @@
+# Ignore developer stuff
+.idea
+/node_modules
+/.env
+/public/mix-manifest.json
+/phpunit.xml
+/build
+/.phpunit.*
+
+# Configs #
+/public/application/config/doctrine/proxies/
+/public/application/config/generated_overrides/
+
+# Files #
+/public/application/files/*/
