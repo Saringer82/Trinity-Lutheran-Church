@@ -113,7 +113,7 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
         }
         if (null === $this->igbinaryEmptyData) {
             // see https://github.com/igbinary/igbinary/issues/146
-            $this->igbinaryEmptyData = \function_exists('igbinary_serialize') ? igbinary_serialize([]) : '';
+            $this->igbinaryEmptyData = \function_exists('igbinary_serialize') ? igbinary_serialize(array()) : '';
         }
         if ('' === $data || $this->igbinaryEmptyData === $data) {
             return $this->destroy($sessionId);
@@ -138,7 +138,7 @@ abstract class AbstractSessionHandler implements \SessionHandlerInterface, \Sess
             $sessionCookie = sprintf(' %s=', urlencode($this->sessionName));
             $sessionCookieWithId = sprintf('%s%s;', $sessionCookie, urlencode($sessionId));
             $sessionCookieFound = false;
-            $otherCookies = [];
+            $otherCookies = array();
             foreach (headers_list() as $h) {
                 if (0 !== stripos($h, 'Set-Cookie:')) {
                     continue;

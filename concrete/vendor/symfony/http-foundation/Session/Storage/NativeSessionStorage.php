@@ -26,7 +26,7 @@ class NativeSessionStorage implements SessionStorageInterface
     /**
      * @var SessionBagInterface[]
      */
-    protected $bags = [];
+    protected $bags = array();
 
     /**
      * @var bool
@@ -54,7 +54,7 @@ class NativeSessionStorage implements SessionStorageInterface
      *
      * List of options for $options array with their defaults.
      *
-     * @see https://php.net/session.configuration for options
+     * @see http://php.net/session.configuration for options
      * but we omit 'session.' from the beginning of the keys for convenience.
      *
      * ("auto_start", is not supported as it tells PHP to start a session before
@@ -98,18 +98,14 @@ class NativeSessionStorage implements SessionStorageInterface
      * @param \SessionHandlerInterface|null $handler
      * @param MetadataBag                   $metaBag MetadataBag
      */
-    public function __construct(array $options = [], $handler = null, MetadataBag $metaBag = null)
+    public function __construct(array $options = array(), $handler = null, MetadataBag $metaBag = null)
     {
-        if (!\extension_loaded('session')) {
-            throw new \LogicException('PHP extension "session" is required.');
-        }
-
-        $options += [
+        $options += array(
             'cache_limiter' => '',
             'cache_expire' => 0,
             'use_cookies' => 1,
             'lazy_write' => 1,
-        ];
+        );
 
         session_register_shutdown();
 
@@ -212,7 +208,7 @@ class NativeSessionStorage implements SessionStorageInterface
         $isRegenerated = session_regenerate_id($destroy);
 
         // The reference to $_SESSION in session bags is lost in PHP7 and we need to re-create it.
-        // @see https://bugs.php.net/70013
+        // @see https://bugs.php.net/bug.php?id=70013
         $this->loadSession();
 
         return $isRegenerated;
@@ -230,7 +226,7 @@ class NativeSessionStorage implements SessionStorageInterface
                 unset($_SESSION[$key]);
             }
         }
-        if ([$key = $this->metadataBag->getStorageKey()] === array_keys($_SESSION)) {
+        if (array($key = $this->metadataBag->getStorageKey()) === array_keys($_SESSION)) {
             unset($_SESSION[$key]);
         }
 
@@ -266,7 +262,7 @@ class NativeSessionStorage implements SessionStorageInterface
         }
 
         // clear out the session
-        $_SESSION = [];
+        $_SESSION = array();
 
         // reconnect the bags to the session
         $this->loadSession();
@@ -335,9 +331,9 @@ class NativeSessionStorage implements SessionStorageInterface
      * For convenience we omit 'session.' from the beginning of the keys.
      * Explicitly ignores other ini keys.
      *
-     * @param array $options Session ini directives [key => value]
+     * @param array $options Session ini directives array(key => value)
      *
-     * @see https://php.net/session.configuration
+     * @see http://php.net/session.configuration
      */
     public function setOptions(array $options)
     {
@@ -345,7 +341,7 @@ class NativeSessionStorage implements SessionStorageInterface
             return;
         }
 
-        $validOptions = array_flip([
+        $validOptions = array_flip(array(
             'cache_expire', 'cache_limiter', 'cookie_domain', 'cookie_httponly',
             'cookie_lifetime', 'cookie_path', 'cookie_secure',
             'entropy_file', 'entropy_length', 'gc_divisor',
@@ -356,7 +352,7 @@ class NativeSessionStorage implements SessionStorageInterface
             'upload_progress.cleanup', 'upload_progress.prefix', 'upload_progress.name',
             'upload_progress.freq', 'upload_progress.min_freq', 'url_rewriter.tags',
             'sid_length', 'sid_bits_per_character', 'trans_sid_hosts', 'trans_sid_tags',
-        ]);
+        ));
 
         foreach ($options as $key => $value) {
             if (isset($validOptions[$key])) {
@@ -375,11 +371,13 @@ class NativeSessionStorage implements SessionStorageInterface
      *     ini_set('session.save_path', '/tmp');
      *
      * or pass in a \SessionHandler instance which configures session.save_handler in the
-     * constructor, for a template see NativeFileSessionHandler.
+     * constructor, for a template see NativeFileSessionHandler or use handlers in
+     * composer package drak/native-session
      *
-     * @see https://php.net/session-set-save-handler
-     * @see https://php.net/sessionhandlerinterface
-     * @see https://php.net/sessionhandler
+     * @see http://php.net/session-set-save-handler
+     * @see http://php.net/sessionhandlerinterface
+     * @see http://php.net/sessionhandler
+     * @see http://github.com/drak/NativeSession
      *
      * @param \SessionHandlerInterface|null $saveHandler
      *
@@ -424,11 +422,11 @@ class NativeSessionStorage implements SessionStorageInterface
             $session = &$_SESSION;
         }
 
-        $bags = array_merge($this->bags, [$this->metadataBag]);
+        $bags = array_merge($this->bags, array($this->metadataBag));
 
         foreach ($bags as $bag) {
             $key = $bag->getStorageKey();
-            $session[$key] = isset($session[$key]) && \is_array($session[$key]) ? $session[$key] : [];
+            $session[$key] = isset($session[$key]) ? $session[$key] : array();
             $bag->initialize($session[$key]);
         }
 

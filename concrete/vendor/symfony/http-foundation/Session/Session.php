@@ -28,7 +28,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
 
     private $flashName;
     private $attributeName;
-    private $data = [];
+    private $data = array();
     private $usageIndex = 0;
 
     /**
@@ -253,9 +253,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function getBag($name)
     {
-        $bag = $this->storage->getBag($name);
-
-        return method_exists($bag, 'getBag') ? $bag->getBag() : $bag;
+        return $this->storage->getBag($name)->getBag();
     }
 
     /**

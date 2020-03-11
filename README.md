@@ -1,4 +1,4 @@
-# Misti's Portfolio
+# Trinity Lutheran Church
 
 ## Compiling JS / CSS assets
 This library uses [Laravel Mix][link-mix]. See [webpack.mix.js][link-webpack-mix-file].
