@@ -1,0 +1,25 @@
+.sermonSeries {  }
+	
+.sermonSeries h1 { padding: 0 0 25px; margin: 0 0 40px; border-bottom: 1px dotted; }	
+.sermonSeries h2 {  margin: 0 0 10px !important;}	
+.sermonSeries p { margin: 0 0 30px; }
+	
+.sermonSeriesWeekSelector {  height: 37px; background: #eee; margin: 0 0 30px; position: relative; }	
+	.sermonSeriesSelectedWeek { color: #4d4d4d; font-weight: bold; text-transform: uppercase; font-size: 16px; padding: 9px 15px; }		
+	   .sermonSeriesWeekSelector img { float: right; }
+	.sermonSeriesWeekSelector ul { display: none; border: 1px solid #ddd; width: 100%; position: absolute; margin: 0 !important; top: 37px; left: 0; padding: 15px; background: #fff; box-shadow: 4px 4px 4px rgba(0,0,0,0.1); }
+	.sermonSeriesWeekSelector ul li { transition: .2s ease all; list-style: none !important; margin: 0 !important; padding: 5px 0; font-size: 14px; cursor: pointer; }
+	.sermonSeriesWeekSelector ul li:hover { background: #ddd; color: #444 !important; padding: 5px 20px; }
+
+.sermonSeriesVideoContainer { margin: 0 0 40px; }	
+	.sermonSeriesVideo { display: none; }	
+
+.seriesAssetContainer { overflow: auto; }	
+	.seriesAssetContainer h2 { padding: 0 0 4px; border-bottom: 1px dotted; margin: 0 0 13px !important; font-size: 22px !important; }
+	.seriesAssetContainer span { font-weight: bold; color: #40382f; }	
+	.sermonSeriesAudioContainer { width: 45%; float: left; margin: 0 10% 0 0; }		
+		.sermonSeriesAudioContainer h2 { background: url(img/bgSeriesAudio.png) right 0px no-repeat; }			
+		.sermonSeriesAudio {display: none;  }		
+	.sermonSeriesNotesContainer { width: 45%; float: left; }		
+		.sermonSeriesNotesContainer h2 { background: url(img/bgSeriesNotes.png) right 0px no-repeat; }		
+		.sermonSeriesNotes {display: none;  }
