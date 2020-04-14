@@ -1,0 +1,112 @@
+/*Mobile version*/
+.ccm-responsive-overlay {
+    background: white;
+    display: none;
+    position: absolute;
+    border-bottom: 5px solid blue;
+    width: 100%;
+    z-index: 99;
+    top: 120px;
+    left: 0;
+    padding-top: 15px;
+    padding-left: 20px;
+    -webkit-text-size-adjust: none;
+
+    @media all and (min-width: 767px) {
+        display: none !important;
+    }
+
+    ul {
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+            display: block;
+
+            a {
+                color: #0099ff;
+                font-size: 18px;
+                display: inline-block;
+                width: 80%;
+                padding: 7px 5% 7px 0px;
+                margin: 0 5% 0 0;
+                padding-left: 15px;
+                height: 100%;
+                font-weight: 200;
+                text-decoration: none;
+
+                &:hover {
+                    color: #abddff;
+                }
+            }
+
+            //Second level nav
+            ul {
+                li {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+//First level dropdown arrow
+.ccm-responsive-overlay ul li.parent-ul a:after {
+    padding-left: 7px;
+    padding-top: 3px;
+    font-size: 20px;
+    content: "\f107";
+    //font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: inherit;
+}
+
+//.ccm-responsive-overlay ul li ul li.last-li a {
+//    padding-top: 0px;
+//    font-size: 15px;
+//    background-color: teal;
+//}
+
+.ccm-responsive-overlay ul li ul li.last-li a:after {
+    content: '';
+}
+
+//Burger icon
+.ccm-responsive-menu-launch {
+    display: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+
+    @media all and (max-width: 767px) {
+        display: block;
+    }
+
+    i:after {
+        font-size: 20px;
+        content: "\f0c9";
+        //font-family: FontAwesome;
+        color: #0099ff;
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        cursor: pointer;
+        text-decoration: inherit;
+    }
+}
+
+.ccm-responsive-menu-launch.responsive-button-close i:after {
+    font-size: 20px;
+    color: #0099ff;
+    content: "\f077";
+    //font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: inherit;
+}

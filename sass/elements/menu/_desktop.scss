@@ -1,0 +1,97 @@
+/*Desktop*/
+
+header {
+    nav {
+        //display: inline-block;
+        //float: right;
+
+        //First level
+        ul {
+            -webkit-font-smoothing: antialiased;
+            list-style: none;
+            margin-top: 10px !important;
+            padding: 0;
+            float: right;
+
+            @media all and (max-width: 767px) {
+                display: none;
+            }
+
+            a {
+                padding-right: 40px;
+                font-weight: 700;
+                color: $primary;
+                text-transform: none;
+
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            li {
+                margin: 0;
+                padding: 0;
+                padding-bottom: 10px;
+                position: relative;
+                display: inline-block;
+
+                &:hover {
+                    ul {
+                        opacity: 1;
+                        top: 30px;
+                        visibility: visible;
+                    }
+                }
+
+                //Second level
+                ul {
+                    cursor: pointer;
+                    padding: 15px;
+                    padding-bottom: 0;
+                    float: left;
+                    left: 0;
+                    opacity: 0;
+                    position: absolute;
+                    top: 20px;
+                    visibility: hidden;
+                    width: 200px;
+                    background-color: lightgoldenrodyellow;
+                    z-index: 99;
+                    -webkit-transition: all 0.25s ease;
+                    -o-transition: all 0.25s ease;
+                    transition: all 0.25s ease;
+                    -webkit-border-radius: 3px;
+                    -moz-border-radius: 3px;
+                    border-radius: 3px;
+                    //-ms-border-radius: 3px;
+                    border: 1px solid #edf2f3;
+
+                    li {
+                        float: none;
+                        width: 100%;
+                        padding-bottom: 0px;
+
+                        &:hover {
+                            a {
+                                color: blue;
+                            }
+                        }
+
+                        a {
+                            display: block;
+                            padding-bottom: 15px;
+                            font-size: 1.0em;
+                            text-transform: none;
+                            color: red;
+                            -webkit-transition: all 0.25s ease;
+                            -o-transition: all 0.25s ease;
+                            transition: all 0.25s ease;
+                            font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                            font-weight: normal;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

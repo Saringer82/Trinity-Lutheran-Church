@@ -1,7 +1,22 @@
-/* Fonts
+/* Layout
+----------------------------------------------------------------------------- */
+// Concrete5 toolbar height
+$toolbar-height: 48px;
+
+
+// header / menu heights
+$header-xs: 60px;
+$header-md: 80px;
+
+/* Animations
 ----------------------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display&display=swap');
+$animation-menu: 200ms;
+$animation-hover: 100ms;
+
+
+/* Fonts
+----------------------------------------------------------------------------- */
 
 $font-base: 'Open Sans', sans-serif;
 $font-logo: 'Playfair Display', serif;
@@ -31,6 +46,9 @@ $grey-dark: #C6C6C6;
 $slate: #4b4b4b;
 $sub-menu: rgba(75, 75, 75, 0.3);
 $overview: rgba(255, 255, 255, 0.6);
+
+$primary: blue;
+$secondary: orange;
 
 
 $screen-sm-min: 768px;
