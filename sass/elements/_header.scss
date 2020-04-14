@@ -1,11 +1,8 @@
-.header {
-    &-logo {
-        font-size: 68px;
-        font-weight: 700;
-    }
+header {
+    background-color: #fff;
+    border-bottom: 1px solid $brand-primary;
 
-    &-intro {
-        letter-spacing: 3.4px;
-        font-size: 17px;
+    .logo {
+
     }
 }
